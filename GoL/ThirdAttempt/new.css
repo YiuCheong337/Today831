@@ -1,0 +1,12 @@
+li {
+    margin-bottom: .5rem;
+  }
+
+
+#mypic {
+    float: right;
+    margin: 0 0 0 40px;
+    padding: 8px 10spx 10px 8px;
+    /* display: flex;
+    justify-content: space-evenly; */
+}

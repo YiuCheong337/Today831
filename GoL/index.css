@@ -1,0 +1,20 @@
+#canvas{
+	background-color: wheat;
+	display: flex;
+	justify-content: center;
+	padding: 8px 10spx 10px 8px;
+}
+
+#butbut1 {
+    background-color: orangered;
+    font-size: medium;
+    font: bold;
+}
+
+#butbut2 {
+    background-color: blueviolet;
+    text-decoration-color: chartreuse;
+    font-size: medium;
+    font-weight: 300;
+    font: bold;
+}

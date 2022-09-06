@@ -1,0 +1,64 @@
+body {
+    background-image:
+    linear-gradient(to bottom, rgba(255,255,0,0.5), rgba(0,0,255,0.5)),
+    url('Sunrise.jpg');
+}
+
+h2 {
+    margin: auto;
+    color: violet;
+    font-weight:bolder;
+    font-size: 3rem;
+    font-family: Helvetica, Arial, sans-serif;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgb(248, 241, 241),
+                 2px 2px 1px red;
+    width: 50%;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown-menu { 
+    color:red;
+}
+
+.btn {
+    display: flex;
+    background-color: rgb(57, 243, 166);
+    border-color: whitesmoke;
+    font-size: medium;
+    font: bold;
+    justify-content:center;
+    align-items: center;
+}
+
+/* 
+.btn-outline-play {
+    background-color: chartreuse;
+    text-decoration-color: chartreuse;
+    font-size: medium;
+    font-weight: 300;
+    font: bold;
+} */
+
+.btn:hover { 
+    background: #d0ff00;
+    text-decoration-color: brown ;
+} 
+
+#canvas {
+	background-color: wheat;
+	display: flex;
+	justify-content: center;
+	padding: 8px 10spx 10px 8px;
+}
+
+#Generations {
+    color: antiquewhite;
+    font-size: x-large;
+    text-align: center;
+}
