@@ -1,49 +1,52 @@
 import express, {Request, Response} from 'express'
-import path from 'path' 
+import path from 'path'
+import expressSession from 'express-session'
 
-const app=express()
+const app = express()
+
+
+app.use(
+    expressSession({
+        secret: 'Tecky Academy teaches typescript',
+        resave: true,
+        saveUninitialized: true,
+    }),
+)
+
+declare module 'express-session' {
+    interface SessionData {
+        name?: string
+    }
+}
+
+app.use(function(req,res,next){
+    req.session.name = "Gordon"
+    console.log("I am a middleware")
+    next()
+})
 
 app.get('/my-js-file', function(req,res){
-    const filePath = path.resolve('./public/js/index.js') 
+    // 強行send 某一個file
+    const filePath = path.resolve('./public/js/index.js')
     res.sendFile(filePath)
 })
 
-app.get('/hello', function(req: Request, res: Response){
-
- // res.send("Hello World! HahaHa !! vahalla")
-    res.end("Hello World! HahahaHa !!")
+app.get('/hello', function(req:Request,res:Response){
+    // 攞個req, 寫個res
+    console.log(req.session)
+    res.end("Hello World, HAHAHA!")
 })
 
 app.use(express.static('public'))
 
-const PORT = 4000
-app.listen(PORT, ()=>(
-    console.log(`I M Listening now at http:localhost:${PORT}\n`)
-))
+// 當所有嘢唔中，先會嚟到呢度
+app.use(function(req,res){
+    // Catch all middleware
+    res.sendFile(path.resolve('public/404.html'))
+})
 
 
-/* all below shows middleware illustration */
-
-// console.log("Step 1")
-
-// app.use((req,res,next)=>{
-//     console.log("Step 3")
-//     next();
-// })
-
-// app.use((req,res,next)=>{
-//     console.log("Step 4")
-//     res.status(200).json({success:true})
-// })
-
-// app.use((req,res,next)=>{
-//     console.log("Step 5")
-//     res.status(200).json({success:true})
-// })
-
-// console.log("Step 2")
-
-// const PORT = 4000
-// app.listen(PORT, ()=>(
-//     console.log(`I M Listening now at http:localhost:${PORT}\n`)
-// ))
+const PORT = 8080
+app.listen(PORT, ()=>{
+    console.log(`Listening at http://localhost:${PORT}`)
+})

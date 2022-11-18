@@ -7,13 +7,18 @@
     "start": "ts-node-dev app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "YYC",
+  "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "@types/express": "^4.17.14",
+    "@types/express-session": "^1.17.5",
+    "@types/node": "^18.7.18",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.3"
   },
   "devDependencies": {
-    "@types/express": "^4.17.14",
     "ts-node-dev": "^2.0.0"
   }
 }
