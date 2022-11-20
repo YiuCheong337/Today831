@@ -8,6 +8,81 @@
 </head>
 <body>
     My Website
+    <form action="/students" method="POST">
+        <Div>
+            <label>
+                First Name:
+                <input
+                    type="text"
+                    name="firstName"
+                    placeholder="Input your First name here"
+                    required
+                />
+            </label>    
+        </Div>
+        <Div>
+            <label>
+                Last Name:
+                <input
+                    type="text"
+                    name="lastname"
+                    placeholder="Input your Last Name here"
+                    required
+                />
+            </label>    
+        </Div>
+        <Div>
+            <label>
+                Email:
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Input your Email here"
+                    required
+                />
+            </label>    
+        </Div>
+        <Div>
+            <label>
+                Password:
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Input your Password here"
+                    required
+                />
+            </label>    
+        </Div>
+        <div>
+            <label>
+              Age:
+              <select name="age">
+                <option value="">--- Please Choose ---</option>
+                <option value="0-18">0-18</option>
+                <option value="19-29">19-29</option>
+                <option value="30-39">30-39</option>
+                <option value="40-49">40-49</option>
+                <option value="50-59">50-59</option>
+                <option value=">60">Above 60</option>
+              </select>
+            </label>
+          </div>
+          <div>
+            <label>
+              Description:
+              <textarea
+                name="description"
+                cols="20"
+                rows="10"
+                placeholder="Tell us about you"
+              ></textarea>
+            </label>
+          </div>
+          <div>
+            <input type="submit" value="Submit" />
+            <input type="reset" value="Clear" />
+          </div>
+    </form>
     <script src="/js/index.js"></script>
 </body>
 </html>
