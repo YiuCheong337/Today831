@@ -2,12 +2,34 @@ import express, {Request, Response} from 'express'
 import path from 'path'
 import expressSession from 'express-session'
 import jsonfile from 'jsonfile'
+import fs from 'fs'
+import formidable  from 'formidable'
+import { parse } from './util'
+
+const uploadDir = 'public/uploads'
+fs.mkdirSync(uploadDir, { recursive: true })
+
+const form = formidable({
+    uploadDir: uploadDir,
+    keepExtensions: true,
+    maxFiles: 1,
+    maxFileSize: 200 * 1024 ** 2,
+    filename: (originalName, originalExt, part, form) => {
+        let fieldName = part.name
+        let timestamp = Date.now()
+        let ext = part.mimetype?.split('/').pop()
+        return `${fieldName}-${timestamp}.${ext}`
+    }
+})
 
 const app = express()
 
-//Body Parser either one for handling "BODY"
-app.use(express.urlencoded({extended:true}))
-app.use(express.json())
+// bodyParser
+
+// URL Encoded Form
+app.use(express.urlencoded({extended:true})); // x-www-urlencoded
+// JSON Format
+app.use(express.json()); // application/json
 
 app.use(
     expressSession({
@@ -24,8 +46,7 @@ declare module 'express-session' {
 }
 
 app.use(function(req,res,next){
-    req.session.name = "YaMa"
-    console.log("I am a middleware")
+    req.session.name = "Gordon"
     next()
 })
 
@@ -41,41 +62,42 @@ app.get('/hello', function(req:Request,res:Response){
     res.end("Hello World, HAHAHA!")
 })
 
-app.get('/students/:grade', async (req, res)=>{
-    // console.log(req.query)
-    // console.log(req.params)
+// GET /students
+app.get('/students/:grade', async (req,res)=>{
+    console.log(req.query) // { name: 'Tecky', location: 'HK' }
+    console.log(req.params)
+
     const students = await jsonfile.readFile('./students.json')
-    // console.log(students)
     res.json(students)
-    console.log('i m here now')
-    // res.send(students) 
-    // res.send(`We are in GET /students by the name of ${req.params.grade}`)
-
-            // be careful the below function has no await, so the above async will not need
-            // app.get('/students/:name/loc/:location', (req, res)=>{
-            //     console.log(req.session)
-            //     const name = req.params.name
-            //     const location = req.params.location
-            //     res.end(`NAME is ${name}, LOCATION is ${location}`)
 })
 
-app.post('/students', (req, res)=>{
+// POST /students  (HTTP Method + Route)
+app.post('/students',async (req,res)=>{
     console.log(req.body)
-    // const ed = req.body.educations[0]
-    // console.log(ed)
-    res.end("We are now in POST /students")
+
+    const [fields, files ] = await parse(form,req)
+
+    await jsonfile.writeFile('./users.json', fields)
+    console.log(files)
+
+    // 保證唔會因為撳Refresh 就重新post 一次
+    // Post 完之後，記住redirect
+    res.redirect('/')
+
 })
 
-app.put('/students', (req, res)=>{
+// PUT /students  (HTTP Method + Route)
+app.put('/students',(req,res)=>{
     console.log(req)
 
-    res.end("WE ARE IN PUT /student")
+    res.end("You are calling PUT /students")
 })
 
-app.delete('/students', (req, res)=>{
+// DELETE /students  (HTTP Method + Route)
+app.delete('/students',(req,res)=>{
     console.log(req)
 
-    res.end("We are now in DELETE /student")
+    res.end("You are calling DELETE /students")
 })
 
 app.use(express.static('public'))
@@ -83,8 +105,11 @@ app.use(express.static('public'))
 // 當所有嘢唔中，先會嚟到呢度
 app.use(function(req,res){
     // Catch all middleware
-    res.status(404).sendFile(path.resolve('public/404.html'))
+    // res.status(404).sendFile(path.resolve('public/404.html'))
+
+    res.redirect('/')
 })
+
 
 const PORT = 8080
 app.listen(PORT, ()=>{

@@ -8,80 +8,58 @@
 </head>
 <body>
     My Website
-    <form action="/students" method="POST">
-        <Div>
+    <form action="/students" method="POST" enctype="multipart/form-data">
+        <div>
             <label>
                 First Name:
                 <input
                     type="text"
                     name="firstName"
+                    id="firstName"
                     placeholder="Input your First name here"
+                    maxlength="5"
                     required
                 />
-            </label>    
-        </Div>
-        <Div>
+            </label>
+        </div>
+        <div>
             <label>
                 Last Name:
                 <input
                     type="text"
-                    name="lastname"
-                    placeholder="Input your Last Name here"
+                    name="lastName"
+                    placeholder="Input your Last name here"
                     required
                 />
-            </label>    
-        </Div>
-        <Div>
+            </label>
+        </div>
+        <div>
             <label>
                 Email:
                 <input
                     type="email"
                     name="email"
-                    placeholder="Input your Email here"
+                    placeholder="Input your email here"
                     required
                 />
-            </label>    
-        </Div>
-        <Div>
+            </label>
+        </div>
+        <div>
             <label>
                 Password:
                 <input
                     type="password"
                     name="password"
-                    placeholder="Input your Password here"
+                    placeholder="Input your password here"
                     required
                 />
-            </label>    
-        </Div>
+            </label>
+        </div>
         <div>
-            <label>
-              Age:
-              <select name="age">
-                <option value="">--- Please Choose ---</option>
-                <option value="0-18">0-18</option>
-                <option value="19-29">19-29</option>
-                <option value="30-39">30-39</option>
-                <option value="40-49">40-49</option>
-                <option value="50-59">50-59</option>
-                <option value=">60">Above 60</option>
-              </select>
-            </label>
-          </div>
-          <div>
-            <label>
-              Description:
-              <textarea
-                name="description"
-                cols="20"
-                rows="10"
-                placeholder="Tell us about you"
-              ></textarea>
-            </label>
-          </div>
-          <div>
-            <input type="submit" value="Submit" />
-            <input type="reset" value="Clear" />
-          </div>
+            <input type='file' name='profile' />
+        </div>
+        <input type="reset" value="Reset"/>
+        <input type="submit" value="Submit"/>
     </form>
     <script src="/js/index.js"></script>
 </body>
