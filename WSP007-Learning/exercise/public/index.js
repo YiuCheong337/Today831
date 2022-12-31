@@ -5,6 +5,8 @@ document
 		event.preventDefault(); // To prevent the form from submitting synchronously
 			     
         const form = event.target;
+
+        // console.log(form.text.value);
 		
         //... create your form object with the form inputs
         let formObject = {
@@ -18,6 +20,8 @@ document
             },
             body: JSON.stringify(formObject),
 		});
+
+        console.log(res.body);
 
 		// Clear the form here
         form.reset();
