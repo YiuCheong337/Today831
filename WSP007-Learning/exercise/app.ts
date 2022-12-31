@@ -2,21 +2,21 @@ import express from 'express';
 import expressSession from 'express-session';
 import path from 'path';
 import jsonfile from 'jsonfile';
-// import formidable from 'formidable';
-// import { parse } from "./util"
+import formidable from 'formidable';
+import { parse } from "./util"
 
-// const form = formidable({
-//     uploadDir: "public/upload",
-//     keepExtensions: true,
-//     maxFiles: 1,
-//     maxFileSize: 200 * 1024 ** 2, // the default limit is 200KB
-//     filter: part => part.mimetype?.startsWith('image/') || false,
-//     filename: (originalName, originalExt, part) => {
-//         let timestamp = Date.now()
-//         let ext = part.mimetype?.split('/').pop()
-//         return `image-${timestamp}.${ext}`
-//     }
-// })
+const form = formidable({
+    uploadDir: "public/upload",
+    keepExtensions: true,
+    maxFiles: 1,
+    maxFileSize: 200 * 1024 ** 2, // the default limit is 200KB
+    filter: part => part.mimetype?.startsWith('image/') || false,
+    filename: (originalName, originalExt, part) => {
+        let timestamp = Date.now()
+        let ext = part.mimetype?.split('/').pop()
+        return `image-${timestamp}.${ext}`
+    }
+})
 
 const app = express()
 
@@ -71,20 +71,36 @@ interface Record {
     text: string | string[];
     image?: string;
 }
+// request boday in JSON content 
+// app.post("/memos", async (req, res) => {
+//     // const [fields, files] = await parse(form, req)
+//     // console.log(files)
+//     const memo: Record[] = await jsonfile.readFile("memos.json")
 
+//     memo.push({
+//         text: req.body.text,
+//         // image: (files.image as formidable.File)?.newFilename
+//     })
+
+//     await jsonfile.writeFile("memos.json", memo, { spaces: 4 })
+//     res.redirect("/");
+// })
+
+// request body in FormData
 app.post("/memos", async (req, res) => {
-    // const [fields, files] = await parse(form, req)
+    const [fields, files] = await parse(form, req)
     // console.log(files)
     const memo: Record[] = await jsonfile.readFile("memos.json")
 
     memo.push({
-        text: req.body.text,
-        // image: (files.image as formidable.File)?.newFilename
+        text: fields.text,
+        image: (files.image as formidable.File)?.newFilename
     })
 
     await jsonfile.writeFile("memos.json", memo, { spaces: 4 })
-    res.redirect("/");
+    res.json(memo); 
 })
+
 
 app.get("/memos", async (req, res) => {
     const memo: Record[] = await jsonfile.readFile("memos.json")
