@@ -1,22 +1,7 @@
 import express from 'express';
 import expressSession from 'express-session';
 import path from 'path';
-import jsonfile from 'jsonfile'
-// import formidable from 'formidable';
-// import { parse } from "./util"
-
-// const form = formidable({
-//     uploadDir: "public/upload",
-//     keepExtensions: true,
-//     maxFiles: 1,
-//     maxFileSize: 200 * 1024 ** 2, // the default limit is 200KB
-//     filter: part => part.mimetype?.startsWith('image/') || false,
-//     filename: (originalName, originalExt, part) => {
-//         let timestamp = Date.now()
-//         let ext = part.mimetype?.split('/').pop()
-//         return `image-${timestamp}.${ext}`
-//     }
-// })
+import jsonfile from 'jsonfile';
 
 const app = express()
 
@@ -44,7 +29,12 @@ interface Record {
     image?: string;
 }
 
-app.post("/memos", async (req, res) => {
+app.get("/memos", async (req, res) => {
+    const memo: Record[] = await jsonfile.readFile("memos.json")
+    res.json(memo);
+})
+
+app.post("/content", async (req, res) => {
     const memo: Record[] = await jsonfile.readFile("memos.json")
 
     memo.push({
@@ -53,11 +43,6 @@ app.post("/memos", async (req, res) => {
 
     await jsonfile.writeFile("memos.json", memo, { spaces: 4 })
     res.redirect("/");
-})
-
-app.get("/memos", async (req, res) => {
-    const memo: Record[] = await jsonfile.readFile("memos.json")
-    res.json(memo);
 })
 
 interface User {

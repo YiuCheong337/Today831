@@ -1,6 +1,7 @@
 {
   "name": "exercise",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "ts-node-dev app.ts",
@@ -23,6 +24,5 @@
   },
   "devDependencies": {
     "@types/express-session": "^1.17.5"
-  },
-  "description": ""
+  }
 }
