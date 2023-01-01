@@ -69,3 +69,20 @@ document.querySelector('#memo-form')
         				// Clear the form here
                         form.reset();
                 });
+
+async function loadMemos(){
+    const res = await fetch('/memos') ; // Fetch from the correct url
+    const memos = await res.json();
+
+    console.log("memos", memos)
+
+    // const memosContainer = document.querySelector('#memos');
+    // for(let memo of memos){
+    //     memosContainer.innerHTML += ` <div class="memo">
+    //         ....
+    //         </div>
+    //         `
+    // }
+}
+
+loadMemos()

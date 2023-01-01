@@ -1,19 +1,5 @@
 [
     {
-        "text": "hi hi hiii hiii",
-        "image": "image-1672519971458.png"
-    },
-    {
-        "text": "def a new picture",
-        "image": "image-1672520148231.jpeg"
-    },
-    {
-        "text": "hjhjhjhj hijack 123"
-    },
-    {
-        "text": "test test test \r\n"
-    },
-    {
         "text": "test test 123 456\r\n"
     },
     {
@@ -21,9 +7,5 @@
     },
     {
         "text": "chrome here\r\n"
-    },
-    {
-        "text": "good morning",
-        "image": "image-1672588154862.svg+xml"
     }
 ]
