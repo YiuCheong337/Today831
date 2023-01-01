@@ -3,8 +3,7 @@ Change the selector to select your memo input form */
 // document.querySelector('#memo-form')
 // 		.addEventListener('submit', async (event)=>{
 // 			event.preventDefault(); // To prevent the form from submitting synchronously
-// 			const form = event.target;
-			
+// 			const form = event.target;		
 //             //... create your form object with the form inputs
 //             let formObject = {
 //                 text: form.text.value
@@ -42,6 +41,8 @@ document.querySelector('#memo-form')
 
 				// Clear the form here
                 form.reset();
+
+                await loadMemos();
         });
 
 
@@ -70,19 +71,26 @@ document.querySelector('#memo-form')
                         form.reset();
                 });
 
-async function loadMemos(){
+async function loadMemos() {
     const res = await fetch('/memos') ; // Fetch from the correct url
     const memos = await res.json();
 
-    console.log("memos", memos)
+    console.log("memos", memos);
 
-    // const memosContainer = document.querySelector('#memos');
-    // for(let memo of memos){
-    //     memosContainer.innerHTML += ` <div class="memo">
-    //         ....
-    //         </div>
-    //         `
-    // }
+    const memosContainer = document.querySelector("#memos-container");
+    memosContainer.innerHTML = ""
+
+    for(let memo of memos){
+        memosContainer.innerHTML += ` 
+            <div class="memo-item-container">
+                <textarea class="memo">${memo.text}</textarea>
+                <i class="bi bi-trash-fill"></i>
+                <i class="bi bi-pencil-square"></i>
+            </div>
+        `;
+    }
 }
 
-loadMemos()
+window.addEventListener("load", async ()=>{
+    await loadMemos()
+})
