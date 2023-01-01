@@ -34,7 +34,6 @@ app.use(
 )
 
 // let lastID: string | null = null;
-
 // app.use((req, res, next) => {
 //     if (lastID === req.session.id) {
 //         res.status(404);
@@ -59,9 +58,7 @@ declare module 'express-session' {
 //     //     // req.session.counter += 1;
 //     //     req.session.counter++;
 //     // }
-
 //     // console.log(`Counter value: ${req.session.counter}`)
-
 //     // const time = new Date()
 //     // console.log(`[${time.toLocaleString()}] Request ${req.path}`)
 //     next()
@@ -101,6 +98,9 @@ app.post("/memos", async (req, res) => {
     res.json(memo); 
 })
 
+app.put("/memos", async(req, res) => {
+    
+})
 
 app.get("/memos", async (req, res) => {
     const memo: Record[] = await jsonfile.readFile("memos.json")
