@@ -4,6 +4,7 @@ import path from 'path';
 import jsonfile from 'jsonfile';
 import formidable from 'formidable';
 import { parse } from "./util"
+import { logger } from './logger';
 
 const form = formidable({
     uploadDir: "public/upload",
@@ -44,19 +45,14 @@ interface Record {
 }
 
 app.get("/memos", async (req, res) => {
-    const memo: Record[] = await jsonfile.readFile("memos.json")
-    res.json(memo);
+    try {
+        const memo: Record[] = await jsonfile.readFile("memos.json")
+        res.json(memo);
+    } catch (e) {
+        logger.error(e)
+        res.status(500).json({ msg: "[MEM001] Failed to get memos" })
+    }
 })
-
-// request body in JSON
-// app.post("/memos", async (req, res) => {
-//     const memo: Record[] = await jsonfile.readFile("memos.json")
-//     memo.push({
-//         text: req.body.text,
-//     })
-//     await jsonfile.writeFile("memos.json", memo, { spaces: 4 })
-//     res.redirect("/");
-// })
 
 // request body in FormData
 app.post("/memos", async (req, res) => {

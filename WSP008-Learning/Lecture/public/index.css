@@ -21,6 +21,7 @@ body {
 #memos-container {
 	padding: 20px 0;
 	display: flex;
+	flex-wrap: wrap;
 }
 
 input[type="file"] {
