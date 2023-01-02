@@ -23,7 +23,6 @@ const app = express()
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-
 app.use(
     expressSession({
         secret: 'I love TypeScipt',
@@ -52,11 +51,9 @@ app.get("/memos", async (req, res) => {
 // request body in JSON
 // app.post("/memos", async (req, res) => {
 //     const memo: Record[] = await jsonfile.readFile("memos.json")
-
 //     memo.push({
 //         text: req.body.text,
 //     })
-
 //     await jsonfile.writeFile("memos.json", memo, { spaces: 4 })
 //     res.redirect("/");
 // })
@@ -75,6 +72,7 @@ app.post("/memos", async (req, res) => {
 
     res.json(memo);
 })
+
 interface User {
     username: string;
     password: string;
@@ -146,5 +144,5 @@ app.use((req, res) => {
 const PORT = 8080;
 
 app.listen(PORT, () => {
-    console.log(`listening on Port: ${PORT}`)
+    console.log(`Server listening on Port: ${PORT}`)
 })
