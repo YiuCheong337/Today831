@@ -1,5 +1,5 @@
 body {
-	background-image: url("./img/wall.jpg");
+	background-image: url('./img/wall.jpg');
 	background-size: cover;
 }
 
@@ -7,7 +7,7 @@ body {
 	background-color: #f5e37a;
 	width: 200px;
 	height: 200px;
-    box-shadow: 10px 5px 5px black;
+	box-shadow: 10px 5px 5px black;
 }
 
 #input-memo-container {
@@ -24,7 +24,7 @@ body {
 	flex-wrap: wrap;
 }
 
-input[type="file"] {
+input[type='file'] {
 	width: 100%;
 }
 
@@ -33,25 +33,25 @@ input[type="file"] {
 }
 
 #memos-container > .memo-item-container {
-    margin: 0 15px;
+	margin: 0 15px;
 }
 
 .bi-trash-fill {
-    position: absolute;
-    right: 0;
-    top: 0;
-    transform: translate(50%,-50%);
+	position: absolute;
+	right: 0;
+	top: 0;
+	transform: translate(50%, -50%);
 }
 
 .bi-pencil-square {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    transform: translate(50%,50%);
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	transform: translate(50%, 50%);
 }
 
 .bi {
-    background-color: white;
-    padding: 10px;
-    border-radius: 100%;
+	background-color: white;
+	padding: 10px;
+	border-radius: 100%;
 }

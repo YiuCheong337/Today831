@@ -27,29 +27,29 @@ import './create-memo.js'
 // 	});
 
 document
-	.querySelector("#login-form")
-	.addEventListener("submit", async (event) => {
-		event.preventDefault(); // To prevent the form from submitting synchronously
+	.querySelector('#login-form')
+	.addEventListener('submit', async (event) => {
+		event.preventDefault() // To prevent the form from submitting synchronously
 
-		const form = event.target;
+		const form = event.target
 
 		//... create your form object with the form inputs
 		let formObject = {
 			username: form.username.value,
-			password: form.password.value,
-		};
+			password: form.password.value
+		}
 
-		const res = await fetch("/login", {
-			method: "POST",
+		const res = await fetch('/login', {
+			method: 'POST',
 			headers: {
-				"Content-Type": "application/json",
+				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify(formObject),
-		});
+			body: JSON.stringify(formObject)
+		})
 
-		form.reset();
-	});
+		form.reset()
+	})
 
-window.addEventListener("load", () => {
-	loadMemos();
+window.addEventListener('load', () => {
+	loadMemos()
 })

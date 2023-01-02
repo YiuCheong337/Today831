@@ -2,23 +2,23 @@ import { loadMemos } from './memo-list.js'
 
 // for FormData
 document
-    .querySelector("#memo-form")
-    .addEventListener("submit", async (event) => {
-        event.preventDefault(); // To prevent the form from submitting synchronously
+	.querySelector('#memo-form')
+	.addEventListener('submit', async (event) => {
+		event.preventDefault() // To prevent the form from submitting synchronously
 
-        const form = event.target;
-        const formData = new FormData();
+		const form = event.target
+		const formData = new FormData()
 
-        formData.append("text", form.text.value);
-        formData.append("image", form.image.files[0]);
+		formData.append('text', form.text.value)
+		formData.append('image', form.image.files[0])
 
-        const res = await fetch("/memos", {
-            method: "POST",
-            body: formData,
-        });
+		const res = await fetch('/memos', {
+			method: 'POST',
+			body: formData
+		})
 
-        // Clear the form here
-        form.reset();
+		// Clear the form here
+		form.reset()
 
-        await loadMemos();
-    });
+		await loadMemos()
+	})
