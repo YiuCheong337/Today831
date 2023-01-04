@@ -1,6 +1,6 @@
 import IncomingForm from 'formidable/Formidable'
 import { Request } from 'express'
-import { Fields, Files } from 'formidable'
+import formidable, { Fields, Files } from 'formidable'
 
 export function parse(form: IncomingForm, req: Request) {
 	return new Promise<[Fields, Files]>((resolve, reject) => {
@@ -13,3 +13,16 @@ export function parse(form: IncomingForm, req: Request) {
 		})
 	})
 }
+
+export const form = formidable({
+	uploadDir: 'public/upload',
+	keepExtensions: true,
+	maxFiles: 1,
+	maxFileSize: 200 * 1024 ** 2, // the default limit is 200KB
+	filter: (part) => part.mimetype?.startsWith('image/') || false,
+	filename: (originalName, originalExt, part) => {
+		let timestamp = Date.now()
+		let ext = part.mimetype?.split('/').pop()
+		return `image-${timestamp}.${ext}`
+	}
+})
