@@ -33,7 +33,7 @@ input[type='file'] {
 }
 
 #memos-container > .memo-item-container {
-	margin: 0 15px;
+	margin: 20px;
 }
 
 .bi-trash-fill {
@@ -48,6 +48,13 @@ input[type='file'] {
 	right: 0;
 	bottom: 0;
 	transform: translate(50%, 50%);
+}
+
+.bi-star-fill {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	transform: translate[-50%, 50%];
 }
 
 .bi {

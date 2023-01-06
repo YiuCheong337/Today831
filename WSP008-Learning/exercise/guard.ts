@@ -1,6 +1,13 @@
 import express from 'express'
 import path from 'path'
 
+declare module 'express-session' {
+	interface SessionData {
+		counter?: number
+		user?: string
+	}
+}
+
 export const isLoggedIn = (
 	req: express.Request,
 	res: express.Response,

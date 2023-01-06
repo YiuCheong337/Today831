@@ -5,6 +5,7 @@ import jsonfile from 'jsonfile'
 import { memoRoutes } from './memoRoutes'
 import { User } from './models'
 import { isLoggedIn } from './guard'
+import { likeMemosRoutes } from './likeMemoRoutes'
 
 const app = express()
 
@@ -26,11 +27,15 @@ declare module 'express-session' {
 	}
 }
 
+// one router for /memos
 // GET /memos/abc
 // POST /memos/1
 // PUT
 // DELETE
 app.use('/memos', memoRoutes)
+
+// another router for /like_memos
+app.use('/like_memos', likeMemosRoutes)
 
 app.post('/login', async (req, res) => {
 	console.log(req.body)

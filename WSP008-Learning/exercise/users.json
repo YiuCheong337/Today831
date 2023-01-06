@@ -1,10 +1,12 @@
 [
 	{
 		"username": "gordon@tecky.io",
-		"password": "tecky"
+		"password": "tecky",
+		"id": 1
 	},
 	{
 		"username": "alex@tecky.io",
-		"password": "tecky"
+		"password": "tecky",
+		"id": 2
 	}
 ]

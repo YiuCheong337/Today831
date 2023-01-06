@@ -1,20 +1,22 @@
 [
-    {
-        "text": "new contents"
-    },
-    {
-        "text": "hihihi hihii"
-    },
-    {
-        "text": "asfdasdfsad"
-    },
-    {
-        "text": "adsfasdfsa"
-    },
-    {
-        "text": "asdfdsaf"
-    },
-    {
-        "text": "wrecsdfdss"
-    }
+	{
+		"text": "new contents",
+		"like_by": [1]
+	},
+	{
+		"text": "hihihi hihii",
+		"like_by": []
+	},
+	{
+		"text": "Gordon like this",
+		"like_by": [1, 2]
+	},
+	{
+		"text": "adsfasdfsa",
+		"like_by": []
+	},
+	{
+		"text": "Gordon new interests",
+		"like_by": [1]
+	}
 ]

@@ -1,9 +1,9 @@
 import express, { Request, Response } from 'express'
-import { logger } from './logger'
 import jsonfile from 'jsonfile'
+import formidable from 'formidable'
+import { logger } from './logger'
 import { Memo } from './models'
 import { form, parse } from './util'
-import formidable from 'formidable'
 import { isLoggedInAPI } from './guard'
 
 export const memoRoutes = express.Router()
@@ -34,7 +34,8 @@ async function postMemos(req: Request, res: Response) {
 
 	memo.push({
 		text: fields.text,
-		image: (files.image as formidable.File)?.newFilename
+		image: (files.image as formidable.File)?.newFilename,
+		like_by: []
 	})
 
 	await jsonfile.writeFile('memos.json', memo, { spaces: 4 })
