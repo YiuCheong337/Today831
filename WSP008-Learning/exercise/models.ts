@@ -7,5 +7,5 @@ export interface Memo {
 export interface User {
 	username: string
 	password: string
-	id: number;
+	id: number
 }

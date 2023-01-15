@@ -31,8 +31,8 @@ async function updateLikeMemo(req: Request, res: Response) {
 	const targetMemoIndex = parseInt(req.params.index)
 	const username = req.session.user
 	const userList: User[] = await jsonfile.readFile(path.resolve('users.json'))
-	
-	const userID = userList.find((user) => user.username === username)?.id;
+
+	const userID = userList.find((user) => user.username === username)?.id
 
 	const memoList: Memo[] = await jsonfile.readFile(path.resolve('memos.json'))
 
