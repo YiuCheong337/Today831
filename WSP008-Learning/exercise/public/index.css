@@ -33,7 +33,7 @@ input[type='file'] {
 }
 
 #memos-container > .memo-item-container {
-	margin: 20px;
+	margin: 100px;
 }
 
 .bi-trash-fill {
@@ -54,11 +54,11 @@ input[type='file'] {
 	position: absolute;
 	left: 0;
 	bottom: 0;
-	transform: translate[-50%, 50%];
+	transform: translate(-50%, 50%);
 }
 
 .bi {
-	background-color: white;
+	background-color: black;
 	padding: 10px;
 	border-radius: 100%;
 }
