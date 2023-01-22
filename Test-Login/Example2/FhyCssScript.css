@@ -1,0 +1,82 @@
+body{
+    background-image: url("binary.png");
+  }
+  /* HEADING OBJECTS STYLING STARTS HERE */
+
+  #headingImage{
+    width: 0px;
+    position: relative;
+    z-index: 2; 
+  }
+  #headbg{
+    position: relative;
+    width: 0px;
+    height: 0px;
+    top: 0px;
+    z-index: 0;
+  }
+  .backgroundMovers{
+    width: 0px;
+    height: 0px;
+    position: relative;
+    z-index: 1;
+  }
+  #headContainer{
+    position: fixed;
+  }
+  /* HEADING OBJECTS STYLING STOPS HERE */
+
+   /* DATE STYLING STARTS HERE */
+   .dateBox{
+    position: fixed;
+  }
+  /* DATE STYLING ENDS HERE */
+
+  /* INPUT AREA STYLES START HERE */
+  #upFlipContainer{
+    z-index: 6;
+  }
+  #downFlipContainer{
+    z-index: 6;
+  }
+  .trapezoids{
+    height: 40px;
+    width: 360px;
+    position: absolute;
+    z-index: 3;
+  }
+  .inverted{
+    transform: scaleY(-1);
+  }
+  #logInContainer{
+    position: absolute;
+    transform: scaleX(-1);
+    z-index: 3;
+  }
+  #registerContainer{
+    position: absolute;
+    z-index: 3;
+  }
+  .inputs{
+    position: absolute;
+    z-index: 6;
+    opacity: 0.6;
+    color: white;
+    font-style: unset;
+  }
+  .texts{
+    position: relative;
+    font-size: 30px;
+    width: 50px;
+    height: 10px;
+    z-index: 7;
+  }
+  /* INPUT AREA STYLES END HERE */
+
+  /* GEARS STYLE STARTS HERE */
+      .gears{
+    position: absolute;
+    transform: rotate(10deg);
+    overflow: hidden;
+  }
+  /* GEARS STYLE ENDS HERE */
