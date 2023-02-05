@@ -9,8 +9,8 @@ let headContainer=document.querySelector("#headContainer");
 
 //DEFAULT VALUES
 let sideMargin=innerWidth*0.025;
-let moversOpacity=0.6;
-let topMargin=innerHeight*0.015;
+let moversOpacity=0.4;
+let topMargin=innerHeight*0.025;
 
 //HEADING STYLE CONFIGURATION
 heading.style.width=`${innerWidth + sideMargin}px`;
@@ -191,6 +191,7 @@ function trapezoidLayout(){
 }
 trapezoidLayout();
 //CANVAS TRAPEZOIDS SIZE
+
 function canvasSize(width,height,...canvasNames){
   for (let element of canvasNames){
     element.width=width;
