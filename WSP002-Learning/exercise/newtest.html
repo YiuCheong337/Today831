@@ -1,0 +1,96 @@
+<html>
+  <head>
+    <title>Grocery List Web Application</title>
+    <style>
+      .grocery-form {
+        display: flex;
+        align-items: center;
+        background-color: lightgray;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      .grocery-form input[type="text"] {
+        width: 75%;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+      }
+
+      .grocery-form button[type="submit"] {
+        width: 25%;
+        padding: 10px;
+        font-size: 16px;
+        background-color: green;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .grocery-form button[type="submit"]:hover {
+        background-color: darkgreen;
+      }
+
+      #grocery-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      #grocery-list li {
+        background-color: lightgray;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+      }
+
+      #grocery-list span {
+        flex-grow: 1;
+      }
+
+      #grocery-list button {
+        background-color: red;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        margin-left: 10px;
+        cursor: pointer;
+      }
+
+      #grocery-list button:hover {
+        background-color: darkred;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Login</h1>
+    <form id="login-form">
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+      <button type="submit">Login</button>
+    </form>
+
+    <h1>Grocery List</h1>
+    <form class="grocery-form" id="grocery-form">
+      <input type="text" id="item" placeholder="Add Item">
+      <button type="submit">Add</button>
+    </form>
+    <ul id="grocery-list"></ul>
+
+    <script>
+      const loginForm = document.querySelector("#login-form");
+      const groceryForm = document.querySelector("#grocery-form");
+      const groceryList = document.querySelector("#grocery-list");
+      const itemInput = document.querySelector("#item");
+      let loggedIn = false;
+
+      loginForm.addEventListener("submit", event => {
+        event.preventDefault();
+
+        const username = document.querySelector("#username").value;
+        const password = document.query
