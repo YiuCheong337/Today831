@@ -73,6 +73,7 @@ const handleSubmit = async(e) => {
     loader(messageDiv);
 
     // fetch data from server
+    // https://codex-l2du.onrender.com  in render.com using github to sign-in
     const response = await fetch('http://localhost:5000', {
         method: 'POST',
         headers:{
