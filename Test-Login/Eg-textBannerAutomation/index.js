@@ -1,6 +1,6 @@
 const containerEl = document.querySelector(".container");
 
-const careers = ["YouTuber", "Web Developer", "Freelancer", "Instructor"];
+const careers = ["Utility Payment", "Go Buy Grocery", "Spending Analysis", "Tools"];
 
 let careerIndex = 0;
 
@@ -11,7 +11,7 @@ updateText();
 function updateText() {
   characterIndex++;
   containerEl.innerHTML = `
-    <h1>I am ${careers[careerIndex].slice(0, 1) === "I" ? "an" : "a"} ${careers[
+    <h1> ${careers[careerIndex].slice(0, 1) === "I" ? " " : " "} ${careers[
     careerIndex
   ].slice(0, characterIndex)}</h1>
     `;
