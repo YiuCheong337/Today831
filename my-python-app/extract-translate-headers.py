@@ -1,5 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
+# googletrans has to be version 3.1.0 a0
+# $> "pip install googletrans==3.1.0a0" 
 import googletrans
 
 # Get the page
